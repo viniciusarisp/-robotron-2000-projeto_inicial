@@ -1,6 +1,7 @@
 const controle = document.querySelectorAll("[data-controle]")
 const estatistica = document.querySelectorAll("[data-estatistica]")
 
+
 const pecas = {
     "bracos": {
         "forca": 29,
@@ -57,5 +58,28 @@ function atualizaEstatistica(peca) {
         elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
     })
 }
+
+
+//Mudar a skin do robo
+const skins = document.querySelectorAll("[data-change]") 
+let robo_atual = 0
+
+skins.forEach( (elemento)=> {
+      elemento.addEventListener('click', (evento)=> {
+            mudar_skin(elemento)
+      })
+})
+
+function mudar_skin(elemento) {
+
+      
+
+      if(elemento.dataset.change === 'next'){
+            if(robo_atual <= 4 ) document.querySelector('.robo').src=`img/robotron.${++robo_atual}.png`
+      } else {
+           if(robo_atual >= 1) document.querySelector('.robo').src=`img/robotron.${--robo_atual}.png`
+      }
+}
+
 
 //finalizado
